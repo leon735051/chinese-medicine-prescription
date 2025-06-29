@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrescriptionWindow</class>
+ <widget class="QDialog" name="PrescriptionWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>中藥處方好幫手 - 開立處方</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_main">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_header">
+     <item>
+      <widget class="QLabel" name="labelPatientInfo">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>病患資料：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelPatientId">
+       <property name="text">
+        <string>編號：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="patientIdLineEdit">
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(240, 240, 240);</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelPatientName">
+       <property name="text">
+        <string>姓名：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="patientNameLineEdit">
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(240, 240, 240);</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelPatientAge">
+       <property name="text">
+        <string>年齡：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="patientAgeLineEdit">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(240, 240, 240);</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelPrescriptionCount">
+       <property name="text">
+        <string>抓藥次數：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="prescriptionCountLineEdit">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(240, 240, 240);</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelCurrentDateTime">
+       <property name="text">
+        <string>開立時間：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="currentDateTimeLineEdit">
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(240, 240, 240);</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_header">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_main">
+     <item>
+      <widget class="QGroupBox" name="groupBoxPrescription">
+       <property name="maximumSize">
+        <size>
+         <width>400</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>處方內容</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_prescription">
+        <item>
+         <widget class="QTableWidget" name="prescriptionTableWidget">
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <column>
+           <property name="text">
+            <string>方劑名/藥材名</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>組成</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>數量</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>單位</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_prescriptionButtons">
+          <item>
+           <widget class="QPushButton" name="clearPrescriptionButton">
+            <property name="text">
+             <string>清除</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="deletePrescriptionItemButton">
+            <property name="text">
+             <string>刪除</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelPrice">
+            <property name="text">
+             <string>價錢：</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="priceLineEdit">
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_saveButtons">
+          <item>
+           <spacer name="horizontalSpacer_save">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="storePrescriptionButton">
+            <property name="text">
+             <string>儲存</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="printPrescriptionButton">
+            <property name="text">
+             <string>列印</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_middle">
+       <item>
+        <widget class="QGroupBox" name="groupBoxNotes">
+         <property name="maximumSize">
+          <size>
+           <width>225</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>診療記錄</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_notes">
+          <item>
+           <widget class="QLabel" name="labelChiefComplaint">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>主訴：</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="chiefComplaintTextEdit"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelDiagnosis">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>判斷：</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="diagnosisTextEdit"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_right">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_topButtons">
+         <item>
+          <widget class="QLabel" name="labelAddNote">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>下方選取按加入</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addToPrescriptionButton">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font-weight: bold; background-color: rgb(144, 238, 144);</string>
+           </property>
+           <property name="text">
+            <string>加入至藥材</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addToPowderButton">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>加入粉劑丸錠</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBoxMedicineSelect">
+         <property name="title">
+          <string/>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_medicine">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_quantity">
+            <item>
+             <widget class="QLabel" name="labelQuantity">
+              <property name="text">
+               <string>數量：</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="quantitySpinBox">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>999</number>
+              </property>
+              <property name="value">
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_quantity">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTabWidget" name="medicineTabWidget">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="tabFormulas">
+             <attribute name="title">
+              <string>方劑</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_formulas">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_formulaSearch">
+                <item>
+                 <widget class="QLineEdit" name="formulaSearchLineEdit">
+                  <property name="placeholderText">
+                   <string>輸入方劑名稱或品號</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="formulaSearchButton">
+                  <property name="text">
+                   <string>搜尋</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="formulaListTableWidget">
+                <property name="alternatingRowColors">
+                 <bool>true</bool>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectRows</enum>
+                </property>
+                <column>
+                 <property name="text">
+                  <string>品號</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>品名</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tabHerbs">
+             <attribute name="title">
+              <string>單味藥</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_herbs">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_herbSearch">
+                <item>
+                 <widget class="QLineEdit" name="herbSearchLineEdit">
+                  <property name="placeholderText">
+                   <string>輸入藥材名稱或品號</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="herbSearchButton">
+                  <property name="text">
+                   <string>搜尋</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="herbListTableWidget">
+                <property name="alternatingRowColors">
+                 <bool>true</bool>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectRows</enum>
+                </property>
+                <column>
+                 <property name="text">
+                  <string>品號</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>品名</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tabSecretFormulas">
+             <attribute name="title">
+              <string>秘方</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_secretFormulas">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_secretSearch">
+                <item>
+                 <widget class="QLineEdit" name="secretSearchLineEdit">
+                  <property name="placeholderText">
+                   <string>輸入秘方名稱或品號</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="secretSearchButton">
+                  <property name="text">
+                   <string>搜尋</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="secretListTableWidget">
+                <property name="alternatingRowColors">
+                 <bool>true</bool>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectRows</enum>
+                </property>
+                <column>
+                 <property name="text">
+                  <string>品號</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>品名</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBoxDetail">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>250</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>詳細資訊</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_detail">
+      <item>
+       <widget class="QGroupBox" name="groupBoxHistoryPrescriptions">
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>歷史藥單記錄</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_historyPrescriptions">
+         <item>
+          <widget class="QTableWidget" name="historyPrescriptionsTableWidget">
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <column>
+            <property name="text">
+             <string>日期時間</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>主訴</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>判斷</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>狀態</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_historyButtons">
+           <item>
+            <widget class="QPushButton" name="loadHistoryButton">
+             <property name="text">
+              <string>所有藥單</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="copyHistoryButton">
+             <property name="text">
+              <string>引用此藥單</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_history">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBoxHistoryDetail">
+        <property name="title">
+         <string>藥單內容詳細</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_historyDetail">
+         <item>
+          <widget class="QTableWidget" name="historyDetailTableWidget">
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <column>
+            <property name="text">
+             <string>方劑名/藥材名</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>組成</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>數量</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>單位</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBoxSelectedInfo">
+        <property name="maximumSize">
+         <size>
+          <width>350</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>選取項目資訊</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_selectedInfo">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_infoSelector">
+           <item>
+            <widget class="QLabel" name="labelInfoType">
+             <property name="text">
+              <string>資訊類型：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="infoTypeComboBox">
+             <item>
+              <property name="text">
+               <string>出典</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>組成</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>功能</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>主治</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>應用</string>
+              </property>
+             </item>
+			 <item>
+			  <property name="text">
+			   <string>注意事項</string>
+			  </property>
+			 </item>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_info">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="selectedInfoTextEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(245, 245, 245);</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
