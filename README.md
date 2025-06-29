@@ -203,15 +203,7 @@ python main.py
 - 添加適當的註解與文檔
 - 確保向後兼容性
 
-## 授權條款
-
-此專案採用 MIT 授權條款 - 詳見 [LICENSE](LICENSE) 檔案
-
 ## 聯絡資訊
 
 - 專案維護者: Damo
 - 專案首頁: https://github.com/leon735051/chinese-medicine-prescription
-
-## 致謝
-
-感謝所有為此專案貢獻的開發者和使用者的回饋建議。

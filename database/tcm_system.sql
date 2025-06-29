@@ -157,3 +157,12 @@ INSERT IGNORE INTO medicines (id, name, origin_text, nature_flavor, effect, indi
 ('M0005', '白朮', '神農本草經', '味甘、苦，性溫。歸脾、胃經。', '補氣健脾，燥濕利水，止汗，安胎。', 
  '脾胃氣虛，消化不良，泄瀉，水腫，自汗，胎動不安。', 
  '用於慢性胃炎、慢性腹瀉、水腫等。每日6-12克，煎服。');
+ 
+ -- 為方劑表添加注意事項及副作用欄位
+ALTER TABLE formulas ADD COLUMN warnings_side_effects TEXT AFTER application;
+
+-- 為單味藥表添加注意事項及副作用欄位
+ALTER TABLE medicines ADD COLUMN warnings_side_effects TEXT AFTER application;
+
+-- 為秘方表添加注意事項及副作用欄位
+ALTER TABLE secret_formulas ADD COLUMN warnings_side_effects TEXT AFTER application;

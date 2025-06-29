@@ -153,7 +153,7 @@ Thumbs.db
 *.sqlite3
 
 # Configuration files with sensitive data
-database_config.json
+#database_config.json
 config_local.json
 
 # Log files
