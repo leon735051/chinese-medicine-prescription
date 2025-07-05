@@ -123,18 +123,20 @@ class FormulaManager:
                     QMessageBox.information(self.ui, "成功", "方劑資料已成功更新")
                     self.load_all_formulas()  # 重新載入列表
                 else:
-                    # 新增方劑
-                    query = """
-                    INSERT INTO formulas (id, name, origin_text, composition, effect, indication, application, warnings_side_effects) 
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-                    """
-                    values = (formula_id, name, source, composition, effect, indication, application, warnings)
-                    
-                    if self.db.execute_insert_update_delete(query, values):
-                        QMessageBox.information(self.ui, "成功", "新方劑資料已成功新增")
-                        self.load_all_formulas()  # 重新載入列表
-                    else:
-                        QMessageBox.critical(self.ui, "錯誤", "新增方劑失敗")
+                    QMessageBox.critical(self.ui, "錯誤", "更新方劑失敗")
+            else:
+                # 新增方劑
+                query = """
+                INSERT INTO formulas (id, name, origin_text, composition, effect, indication, application, warnings_side_effects) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                """
+                values = (formula_id, name, source, composition, effect, indication, application, warnings)
+                
+                if self.db.execute_insert_update_delete(query, values):
+                    QMessageBox.information(self.ui, "成功", "新方劑資料已成功新增")
+                    self.load_all_formulas()  # 重新載入列表
+                else:
+                    QMessageBox.critical(self.ui, "錯誤", "新增方劑失敗")
         
         except Exception as e:
             QMessageBox.critical(self.ui, "資料庫錯誤", f"儲存方劑資料時發生錯誤: {e}")
